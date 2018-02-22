@@ -9,12 +9,12 @@ namespace RPG {
 
         //Construtor setando os valores base do warrior
         public Warrior(String nome) {
-            this.nome = nome;
-            Lvl = 1; xp_atual = 0; xp_total = 1000;
-            hp_total = 500; hp_atual = hp_total;
-            mp_total = 250; mp_atual = mp_total;
-            base_def = 30; base_dmg = 80;
-            nome_classe = "Warrior";
+            this.Nome = nome;
+            Lvl1 = 1; Xp_atual = 0; Xp_total = 1000;
+            Hp_total = 500; Hp_atual = Hp_total;
+            Mp_total = 250; Mp_atual = Mp_total;
+            Base_def = 30; Base_dmg = 80;
+            Nome_classe = "Warrior";
         }
 
 
@@ -24,7 +24,7 @@ namespace RPG {
             int dano_skill = 250;
 
             if (IsManaAvaliable(custo_skill) == true) {
-                mp_atual -= custo_skill;
+                Mp_atual -= custo_skill;
                 return dano_skill;
             }
             else {

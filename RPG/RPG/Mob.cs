@@ -6,18 +6,29 @@ using System.Threading.Tasks;
 
 namespace RPG {
     abstract class Mob {
-        public String nome;
-        public int hp_atual, hp_total;
-        public int mp_atual, mp_total;
-        public int Lvl,given_xp;
-        public int base_dmg, base_def;
+
+        private String nome;
+        private int hp_atual, hp_total;
+        private int mp_atual, mp_total;
+        private int Lvl,given_xp;
+        private int base_dmg, base_def;
+
+        public string Nome { get => nome; set => nome = value; }
+        public int Hp_atual { get => hp_atual; set => hp_atual = value; }
+        public int Hp_total { get => hp_total; set => hp_total = value; }
+        public int Mp_atual { get => mp_atual; set => mp_atual = value; }
+        public int Mp_total { get => mp_total; set => mp_total = value; }
+        public int Lvl1 { get => Lvl; set => Lvl = value; }
+        public int Given_xp { get => given_xp; set => given_xp = value; }
+        public int Base_dmg { get => base_dmg; set => base_dmg = value; }
+        public int Base_def { get => base_def; set => base_def = value; }
 
         public int Give_xp() {
-            return given_xp;
+            return Given_xp;
         }
 
         public bool IsAlive() {
-            if (hp_atual > 0) {
+            if (Hp_atual > 0) {
                 return true;
             }
             else {
@@ -26,12 +37,12 @@ namespace RPG {
         }
 
         public int Atk_base() {
-            return base_dmg;
+            return Base_dmg;
         }
 
         public bool Take_dmg(int dmg) {
-            if (dmg > base_def) {
-                hp_atual -= dmg;
+            if (dmg > Base_def) {
+                Hp_atual -= dmg;
                 return true;
             }
             else {

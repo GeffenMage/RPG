@@ -8,11 +8,11 @@ namespace RPG {
     class Goblin : Mob {
 
         public Goblin() {
-            nome = "Goblin";
-            hp_total = 300;hp_atual = hp_total;
-            mp_total = 150;mp_atual = mp_total;
-            given_xp = 100;Lvl = 5;
-            base_def = 20;base_dmg = 50;
+            Nome = "Goblin";
+            Hp_total = 300;Hp_atual = Hp_total;
+            Mp_total = 150;Mp_atual = Mp_total;
+            Given_xp = 100;Lvl1 = 5;
+            Base_def = 20;Base_dmg = 50;
         }
 
 

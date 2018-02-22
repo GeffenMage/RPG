@@ -8,18 +8,30 @@ namespace RPG
 {
     abstract class Player 
     {
-       public String nome;
-       public int hp_atual, hp_total;
-       public int mp_atual, mp_total;
-       public int xp_atual, xp_total,Lvl;
-       public int base_dmg, base_def;
-       public String nome_classe;
+       private String nome;
+       private int hp_atual, hp_total;
+       private int mp_atual, mp_total;
+       private int xp_atual, xp_total,Lvl;
+       private int base_dmg, base_def;
+       private String nome_classe;
+
+        public string Nome { get => nome; set => nome = value; }
+        public int Hp_atual { get => hp_atual; set => hp_atual = value; }
+        public int Hp_total { get => hp_total; set => hp_total = value; }
+        public int Mp_atual { get => mp_atual; set => mp_atual = value; }
+        public int Mp_total { get => mp_total; set => mp_total = value; }
+        public int Xp_atual { get => xp_atual; set => xp_atual = value; }
+        public int Xp_total { get => xp_total; set => xp_total = value; }
+        public int Lvl1 { get => Lvl; set => Lvl = value; }
+        public int Base_dmg { get => base_dmg; set => base_dmg = value; }
+        public int Base_def { get => base_def; set => base_def = value; }
+        public string Nome_classe { get => nome_classe; set => nome_classe = value; }
 
         //Implementar interface gráfica de movimento para o personagem
         public bool IsLvUP() {
-            if (xp_atual == xp_total) {
-                Lvl++;
-                xp_total *= 2;
+            if (Xp_atual == Xp_total) {
+                Lvl1++;
+                Xp_total *= 2;
                 return true;
             }
             else {
@@ -28,9 +40,9 @@ namespace RPG
         }
 
         public void Gain_xp(int xp_gain) {
-            xp_atual += xp_gain;
+            Xp_atual += xp_gain;
             if(IsLvUP()== true) {
-                xp_atual = xp_atual - xp_total;
+                Xp_atual = Xp_atual - Xp_total;
             }
             else {
                 return;
@@ -39,7 +51,7 @@ namespace RPG
 
 
         public bool IsManaAvaliable(int custo_de_mana) {
-            if (mp_atual >= custo_de_mana) {
+            if (Mp_atual >= custo_de_mana) {
                 return true;
             }
             else {
@@ -50,7 +62,7 @@ namespace RPG
         }
 
         public bool IsAlive() {
-            if (hp_atual > 0) {
+            if (Hp_atual > 0) {
                 return true;
             }
             else {
@@ -60,12 +72,12 @@ namespace RPG
 
         //Necessario modificar esse método caso quiser adicionar modificadores para ataque
         public int Atk_base() {
-            return base_dmg;
+            return Base_dmg;
         }
 
         public bool Take_dmg(int dmg) {
-            if (dmg > base_def) {
-                hp_atual -= dmg;
+            if (dmg > Base_def) {
+                Hp_atual -= dmg;
                 return true;
             }
             else {
