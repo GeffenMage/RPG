@@ -42,13 +42,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Personagens\Skill.cs" />
-    <Compile Include="Personagens\Player.cs" />
-    <Compile Include="Personagens\Warrior.cs" />
-    <Compile Include="Inimigos\Mob.cs" />
-    <Compile Include="Inimigos\Goblin.cs" />
-    <Compile Include="Controladores\BattleController.cs" />
-    <Compile Include="Controladores\Program.cs" />
+    <Compile Include="Skill.cs" />
+    <Compile Include="Player.cs" />
+    <Compile Include="Warrior.cs" />
+    <Compile Include="Mob.cs" />
+    <Compile Include="Goblin.cs" />
+    <Compile Include="BattleController.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
