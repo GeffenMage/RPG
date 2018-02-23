@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RPG {
+namespace RPG.Personagens.Inimigos {
     abstract class Mob {
 
         private String nome;
