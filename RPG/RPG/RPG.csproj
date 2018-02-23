@@ -42,12 +42,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Player.cs" />
-    <Compile Include="Warrior.cs" />
-    <Compile Include="Mob.cs" />
-    <Compile Include="Goblin.cs" />
-    <Compile Include="BattleController.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="Inimigos\Fantasma.cs" />
+    <Compile Include="Inimigos\Laposo.cs" />
+    <Compile Include="Inimigos\Ogro.cs" />
+    <Compile Include="Personagens\Player.cs" />
+    <Compile Include="Personagens\Warrior.cs" />
+    <Compile Include="Inimigos\Mob.cs" />
+    <Compile Include="Inimigos\Goblin.cs" />
+    <Compile Include="Controler\BattleController.cs" />
+    <Compile Include="Controler\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
