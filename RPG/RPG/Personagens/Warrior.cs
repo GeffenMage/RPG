@@ -10,7 +10,7 @@ namespace RPG {
         //Construtor setando os valores base do warrior
         public Warrior(String nome) {
             this.Nome = nome;
-            Lvl1 = 1; Xp_atual = 0; Xp_total = 1000;
+            Lvl = 1; Xp_atual = 0; Xp_total = 1000;
             Hp_total = 500; Hp_atual = Hp_total;
             Mp_total = 250; Mp_atual = Mp_total;
             Base_def = 30; Base_dmg = 80;

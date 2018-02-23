@@ -14,7 +14,6 @@ namespace RPG
             Warrior p1 = new Warrior("Jogador_teste");
             Goblin g1 = new Goblin();
             btc.Battle(p1, g1);
-
             Console.ReadKey();
         }
     }

@@ -19,20 +19,24 @@ namespace RPG {
                 if (turno_player == true) {
                     Display_player_menu(jogador);
                     option = System.Console.ReadLine();
-                    if(option == "2") {
-                        Display_player_skills_Menu(jogador);
-                        option = System.Console.ReadLine();
-                        System.Console.WriteLine(inimigo.Nome + " recebeu " + Skill_select(jogador, option, inimigo)+ " de dano");
-                        System.Console.ReadKey();
-                        turno_player = false;
-                        turno_atual++;
-                    }
-                    else {
-                        inimigo.Take_dmg(jogador.Atk_base());
-                        System.Console.WriteLine(inimigo.Nome + " recebeu " + jogador.Atk_base() + " de dano");
-                        System.Console.ReadKey();
-                        turno_player = false;
-                        turno_atual++;
+                    switch (option) {
+                        case "1":
+                            inimigo.Take_dmg(jogador.Atk_base());
+                            System.Console.WriteLine(inimigo.Nome + " recebeu " + jogador.Atk_base() + " de dano");
+                            System.Console.ReadKey();
+                            turno_player = false;
+                            turno_atual++;
+                            break;
+                        case "2":
+                            Display_player_skills_Menu(jogador);
+                            option = System.Console.ReadLine();
+                            System.Console.WriteLine(inimigo.Nome + " recebeu " + Skill_select(jogador, option, inimigo) + " de dano");
+                            System.Console.ReadKey();
+                            turno_player = false;
+                            turno_atual++;
+                            break;
+                        default:
+                            break;
                     }
                 }
                 else {
@@ -80,13 +84,13 @@ namespace RPG {
             switch (jogador.Nome_classe) {
                 case "Warrior":
                     Warrior w = jogador as Warrior;
-                    if(skill_num == "1") {
-                        dmg_skill = w.Skill_Stomp();
-                        inimigo.Take_dmg(dmg_skill);
-                        return dmg_skill;
-                    }
-                    else {
-                        return 0;
+                    switch (skill_num) {
+                        case "1":
+                            dmg_skill = w.Skill_Stomp();
+                            inimigo.Take_dmg(dmg_skill);
+                            return dmg_skill;
+                        default:
+                            return 0;
                     }
                 //Casos adicionais devem ser colocados para cada classe do jogador
                 default:

@@ -10,7 +10,7 @@ namespace RPG {
         private String nome;
         private int hp_atual, hp_total;
         private int mp_atual, mp_total;
-        private int Lvl,given_xp;
+        private int lvl,given_xp;
         private int base_dmg, base_def;
 
         public string Nome { get => nome; set => nome = value; }
@@ -18,7 +18,7 @@ namespace RPG {
         public int Hp_total { get => hp_total; set => hp_total = value; }
         public int Mp_atual { get => mp_atual; set => mp_atual = value; }
         public int Mp_total { get => mp_total; set => mp_total = value; }
-        public int Lvl1 { get => Lvl; set => Lvl = value; }
+        public int Lvl { get => Lvl; set => Lvl = value; }
         public int Given_xp { get => given_xp; set => given_xp = value; }
         public int Base_dmg { get => base_dmg; set => base_dmg = value; }
         public int Base_def { get => base_def; set => base_def = value; }
