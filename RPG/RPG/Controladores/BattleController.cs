@@ -47,53 +47,89 @@ namespace RPG {
                     }
                 }
             }
+            Victory(jogador, inimigo);
         }
+        //Mudar retorno para string quando implementar o front-end
         public void Display_player_status(Player jogador) {
-            System.Console.WriteLine("Player:" + jogador.Nome + "\nLV:" + jogador.Lvl1);
+            System.Console.WriteLine("Player:" + jogador.Nome + "\nLV:" + jogador.Lvl);
             System.Console.Write("HP:" + jogador.Hp_atual + "/" + jogador.Hp_total);
             System.Console.WriteLine("||MP:" + jogador.Mp_atual + "/" + jogador.Mp_total);
             System.Console.WriteLine("XP:" + jogador.Xp_atual + "/" + jogador.Xp_total);
         }
+        //Mudar retorno para string quando implementar o front-end
         public void Display_mob_status(Mob inimigo) {
-            System.Console.WriteLine("Enemy:" + inimigo.Nome + "\nLV:" + inimigo.Lvl1);
+            System.Console.WriteLine("Enemy:" + inimigo.Nome + "\nLV:" + inimigo.Lvl);
             System.Console.Write("HP:" + inimigo.Hp_atual + "/" + inimigo.Hp_total);
             System.Console.WriteLine("||MP:" + inimigo.Mp_atual + "/" + inimigo.Mp_total);
         }
 
+        //Mudar retorno para string quando implementar o front-end
         public void Display_player_menu(Player jogador) {
             System.Console.WriteLine("===================");
             System.Console.WriteLine("Atacar[1]\nSkills[2]");
         }
-
+        
+        //Mudar retorno para String e criar uma variavél string que é concatenada a cada passagem do foreach
+        //quando implementar o front-end
         public void Display_player_skills_Menu(Player jogador) {
-            switch(jogador.Nome_classe) {
-                case "Warrior":
-                    System.Console.WriteLine("Stomp[1], Custo: 30MP");
-                    break;
-                default:
-                    return;
+            
+            foreach( Skill s in jogador.Skills){
+                int i = 1;
+                //Será necessário modificar esse if else para skills que custem mana e hp
+                if (s.Custo_hp == 0) {
+                    System.Console.WriteLine(s.Skill_name + "[" + i + "] Custo:" + s.Custo_mp + "MP");
+                }
+                else {
+                    System.Console.WriteLine(s.Skill_name + "[" + i + "] Custo:" + s.Custo_hp + "HP");
+                }
+                i++;
             }
+            
             
         }
 
+        //Requer polimento para inclusão de novas classes de jogador de forma mais fácil
         public int Skill_select(Player jogador,String skill_num, Mob inimigo) {
             int dmg_skill;
             switch (jogador.Nome_classe) {
                 case "Warrior":
                     Warrior w = jogador as Warrior;
-                    if(skill_num == "1") {
-                        dmg_skill = w.Skill_Stomp();
-                        inimigo.Take_dmg(dmg_skill);
-                        return dmg_skill;
+                    switch(skill_num) {
+                        case "1":
+                            dmg_skill = w.Skills[0].executar(jogador);
+                            inimigo.Take_dmg(dmg_skill);
+                            return dmg_skill;
+                        default:
+                            System.Console.WriteLine("Skill Inválida, tente novamente.");
+                            break;
                     }
-                    else {
-                        return 0;
-                    }
+                    break;
                 //Casos adicionais devem ser colocados para cada classe do jogador
+                case "Mago"://Criar um switch case para cada skill da classe
+                    break;
+                case "Arqueiro"://Criar um switch case para cada skill da classe
+                    break;
                 default:
                     return 0;
             }
+            return 0;
+        }
 
+        public void Victory(Player jogador,Mob inimigo) {
+            System.Console.Clear();
+            System.Console.WriteLine("Resultados da Batalha");
+            System.Console.WriteLine("====================");
+            System.Console.WriteLine("HP: " + jogador.Hp_atual + "/" + jogador.Hp_total);
+            System.Console.WriteLine("MP: " + jogador.Mp_atual + "/" + jogador.Mp_total);
+            System.Console.WriteLine("XP: " + jogador.Xp_atual + "/" + jogador.Xp_total+" +"+inimigo.Given_xp);
+            jogador.Gain_xp(inimigo.Give_xp());
+            if (jogador.IsLvUP() == true) {
+                jogador.LvUp();
+                System.Console.WriteLine("Voce avancou para o Level " + jogador.Lvl);
+            }
+            else {
+                return;
+            }
         }
     }
 }

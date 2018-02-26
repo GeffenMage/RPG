@@ -32,17 +32,21 @@ namespace RPG {
         public int Skill_dmg { get => skill_dmg; set => skill_dmg = value; }
 
         public int executar(Player p1) {
-            if(p1.IsManaAvaliable(Custo_mp)==true && p1.Lvl >= Lv_requerido) {
+            if(p1.IsManaAvaliable(Custo_mp)==false) {
+                return -1; //Código para quando o jogador não tiver mana para a skill
+            }
+            else if(p1.Lvl < Lv_requerido) {
+                return -2; //Código para quando o jogador não tiver level para usar a skill
+            }
+            else {
                 p1.Mp_atual += Mp_up;
                 p1.Mp_total += Mp_up;
                 p1.Hp_atual += Hp_up;
                 p1.Hp_total += Hp_up;
                 p1.Base_dmg += Base_dmg_up;
                 p1.Base_def += Base_def_up;
+                p1.Mp_atual -= Custo_mp;
                 return Skill_dmg;
-            }
-            else {
-                return 0;
             }
         }
     }

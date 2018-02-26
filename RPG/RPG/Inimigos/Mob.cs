@@ -18,7 +18,7 @@ namespace RPG {
         public int Hp_total { get => hp_total; set => hp_total = value; }
         public int Mp_atual { get => mp_atual; set => mp_atual = value; }
         public int Mp_total { get => mp_total; set => mp_total = value; }
-        public int Lvl { get => Lvl; set => Lvl = value; }
+        public int Lvl { get => lvl; set => lvl = value; }
         public int Given_xp { get => given_xp; set => given_xp = value; }
         public int Base_dmg { get => base_dmg; set => base_dmg = value; }
         public int Base_def { get => base_def; set => base_def = value; }

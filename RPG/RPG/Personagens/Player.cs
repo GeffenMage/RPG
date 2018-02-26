@@ -14,6 +14,7 @@ namespace RPG
        private int xp_atual, xp_total,lvl;
        private int base_dmg, base_def;
        private String nome_classe;
+       private List<Skill> skills;
 
         public string Nome { get => nome; set => nome = value; }
         public int Hp_atual { get => hp_atual; set => hp_atual = value; }
@@ -22,21 +23,26 @@ namespace RPG
         public int Mp_total { get => mp_total; set => mp_total = value; }
         public int Xp_atual { get => xp_atual; set => xp_atual = value; }
         public int Xp_total { get => xp_total; set => xp_total = value; }
-        public int Lvl { get => Lvl; set => Lvl = value; }
+        public int Lvl { get => lvl; set => lvl = value; }
         public int Base_dmg { get => base_dmg; set => base_dmg = value; }
         public int Base_def { get => base_def; set => base_def = value; }
         public string Nome_classe { get => nome_classe; set => nome_classe = value; }
+        internal List<Skill> Skills { get => skills; set => skills = value; }
 
         //Implementar interface gráfica de movimento para o personagem
         public bool IsLvUP() {
-            if (Xp_atual == Xp_total) {
-                Lvl++;
-                Xp_total *= 2;
+            if (Xp_atual >= Xp_total) {
                 return true;
             }
             else {
                 return false;
             }
+        }
+
+        public void LvUp() {
+            Lvl++;
+            Xp_total *= 2;
+            Xp_atual = 0;
         }
 
         public void Gain_xp(int xp_gain) {
