@@ -12,10 +12,13 @@ namespace RPG
         static void Main(string[] args)
         {
             BattleController btc = new BattleController();
-            Warrior p1 = new Warrior("Jogador_teste");
+            Warrior p1 = new Warrior("Jogador");
             Goblin g1 = new Goblin(1);
-            btc.Battle(p1, g1);
-
+            Goblin g2 = new Goblin(1);
+            Ogro o1 = new Ogro(1);
+            btc.Battle(p1, o1);
+            Console.ReadKey();
+            btc.Battle(p1, g2);
             Console.ReadKey();
         }
     }

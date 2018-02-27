@@ -37,17 +37,34 @@ namespace RPG {
                     }
                 }
                 else {
-                    if(inimigo.Nome == "Goblin") {
-                        Goblin g = inimigo as Goblin;
-                        jogador.Take_dmg(g.Atk_base());
-                        System.Console.WriteLine("Voce recebeu:" + inimigo.Base_dmg + " de dano");
-                        System.Console.ReadKey();
-                        turno_player = true;
-                        turno_atual++;
+                    //Cada caso é um comportamento de mob
+                    switch(inimigo.Nome){
+                        case "Goblin":
+                            jogador.Take_dmg(inimigo.Atk_base());
+                            System.Console.WriteLine("Voce recebeu:" + inimigo.Base_dmg + " de dano");
+                            System.Console.ReadKey();
+                            turno_player = true;
+                            turno_atual++;
+                            break;
+                        default:
+                            jogador.Take_dmg(inimigo.Atk_base());
+                            System.Console.WriteLine("Voce recebeu:" + inimigo.Base_dmg + " de dano");
+                            System.Console.ReadKey();
+                            turno_player = true;
+                            turno_atual++;
+                            break;
                     }
                 }
             }
-            Victory(jogador, inimigo);
+            if (jogador.IsAlive() == false) {
+                System.Console.Clear();
+                System.Console.WriteLine("GAME OVER\nVOCE MORREU");
+                return;
+            }
+            else {
+                Victory(jogador, inimigo);
+                return;
+            }
         }
         //Mudar retorno para string quando implementar o front-end
         public void Display_player_status(Player jogador) {
@@ -88,9 +105,13 @@ namespace RPG {
             
         }
 
-        //Requer polimento para inclusão de novas classes de jogador de forma mais fácil
         public int Skill_select(Player jogador,String skill_num, Mob inimigo) {
             int dmg_skill;
+            int index = Int32.Parse(skill_num);
+            dmg_skill = jogador.Skills[index-1].executar(jogador);
+            inimigo.Take_dmg(dmg_skill);
+            return dmg_skill;
+            /*
             switch (jogador.Nome_classe) {
                 case "Warrior":
                     Warrior w = jogador as Warrior;
@@ -113,6 +134,7 @@ namespace RPG {
                     return 0;
             }
             return 0;
+            */
         }
 
         public void Victory(Player jogador,Mob inimigo) {
