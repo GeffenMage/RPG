@@ -34,6 +34,7 @@ namespace RPG {
                         System.Console.ReadKey();
                         turno_player = false;
                         turno_atual++;
+                        //
                     }
                 }
                 else {
